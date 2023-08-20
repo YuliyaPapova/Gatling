@@ -11,6 +11,6 @@ class PerfTestSimulation extends Simulation {
   //mvn gatling:test
   //mvn clean gatling:test
   setUp {
-    scnHW.inject(atOnceUsers(100))
+    scnHW.inject(constantUsersPerSec(3).during(10 * 60))
   }.protocols(httpProtocol)
 }
