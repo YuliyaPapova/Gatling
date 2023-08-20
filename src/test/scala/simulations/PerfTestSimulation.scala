@@ -7,10 +7,13 @@ import scenarios.HW.scnHW
 
 class PerfTestSimulation extends Simulation {
 
-
+val testDuration = 4 * 60 * 60;
+val numUsers = 160;
+  
   //mvn gatling:test
   //mvn clean gatling:test
-  setUp {
-    scnHW.inject(constantUsersPerSec(3).during(10 * 60))
+  
+setUp {
+     scnHW.inject(constantConcurrentUsers(numUsers).during(testDuration))
   }.protocols(httpProtocol)
 }
